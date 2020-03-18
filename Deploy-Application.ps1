@@ -140,7 +140,7 @@ Try {
 
 		## <Perform Installation tasks here>
 		## Install Citrix VDA RemotePC
-		$exitCode = Execute-Process	-Path "$dirFiles\VDAWorkstationSetup_1912.exe" -Parameters "/QUIET /ENABLE_HDX_PORTS /ENABLE_REMOTE_ASSISTANCE /ENABLE_REAL_TIME_TRANSPORT /COMPONENTS VDA /CONTROLLERS 'VMWNTNXSRV01.WINAD.MSUDENVER.EDU' /REMOTEPC" -WindowStyle 'Hidden' -IgnoreExitCodes '1223' -PassThru
+		$exitCode = Execute-Process	-Path "$dirFiles\VDAWorkstationSetup_1912.exe" -Parameters "/QUIET /NOREBOOT /ENABLE_HDX_PORTS /ENABLE_REMOTE_ASSISTANCE /ENABLE_REAL_TIME_TRANSPORT /COMPONENTS VDA /CONTROLLERS 'VMWNTNXSRV01.WINAD.MSUDENVER.EDU' /REMOTEPC" -WindowStyle 'Hidden' -IgnoreExitCodes '1223' -PassThru
 		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 
 		##*===============================================
@@ -182,7 +182,7 @@ Try {
 		}
 
 		# <Perform Uninstallation tasks here>
-		$exitCode = Execute-Process	-Path "$dirFiles\VDAWorkstationSetup_1912.exe" -Parameters "/QUIET /REMOVEALL" -WindowStyle 'Hidden' -IgnoreExitCodes '1223' -PassThru
+		$exitCode = Execute-Process	-Path "$dirFiles\VDAWorkstationSetup_1912.exe" -Parameters "/QUIET /NOREBOOT /REMOVEALL" -WindowStyle 'Hidden' -IgnoreExitCodes '1223' -PassThru
 		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 
 		##*===============================================
